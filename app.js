@@ -157,9 +157,11 @@ const Quizes = [
 
 const quizzes = document.getElementById("quizzes");
 const score = document.getElementById("score");
+const dakrBtn = document.getElementById("darkBtn");
 let scoreCount = 0;
 let i = 0;
-console.log(Quizes.length);
+
+// console.log(Quizes.length);
 function displayQuiz(arr, pos) {
   // console.log(pos);
   if (pos > arr.length - 1) {
@@ -174,7 +176,7 @@ function displayQuiz(arr, pos) {
     ${Quizes[pos].Question} 
     </h1>
     </span>
-    ${Quizes[pos].Answer.map((elem, index) => {
+    ${Quizes[pos].Answer.map(function (elem, index) {
       return ` <div>
           <input type="checkbox" onclick="checkAnswer(${index},${pos})" />
           <span>${elem.option}</span>
@@ -198,5 +200,30 @@ function checkAnswer(index, i) {
     }
   }
 }
-
+let bool = true;
+dakrBtn.addEventListener("click", function () {
+  if (bool) {
+    document.body.className = "bg-black text-white";
+    quizzes.className =
+      "bg-black rounded-lg shadow-md p-8 w-full max-w-md border";
+    bool = false;
+  }else{
+    document.body.className = "bg-gray-200";
+    quizzes.className =
+      "bg-white rounded-lg shadow-md p-8 w-full max-w-md border";
+      bool = true;
+  }
+});
+//projects
+//concept , project ✔
 window.addEventListener("load", displayQuiz(Quizes, 0));
+
+// const car = {
+//   company: "Audi",
+//   model: "R8",
+//   engine: "V8",
+// };
+
+// // car.company = "Mercedez"
+// // console.log(Object.keys(car));
+// console.log(Object.entries(car))
